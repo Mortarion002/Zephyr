@@ -143,24 +143,26 @@ class _TomorrowBanner extends StatelessWidget {
             fill: 0,
           ),
           const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Tomorrow's Temperature",
-                style: TemporaTextStyles.dataMono(
-                  color: TemporaColors.onSurface,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Tomorrow's Temperature",
+                  style: TemporaTextStyles.dataMono(
+                    color: TemporaColors.onSurface,
+                  ),
                 ),
-              ),
-              Text(
-                isWarmer
-                    ? 'Temperatures a little higher than today'
-                    : 'Temperatures a little lower than today',
-                style: TemporaTextStyles.dataMono().copyWith(fontSize: 12),
-              ),
-            ],
+                Text(
+                  isWarmer
+                      ? 'A little higher than today'
+                      : 'A little lower than today',
+                  style: TemporaTextStyles.dataMono().copyWith(fontSize: 12),
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
+          const SizedBox(width: 8),
           Text(
             '$sign$delta°',
             style: TemporaTextStyles.headingLg().copyWith(

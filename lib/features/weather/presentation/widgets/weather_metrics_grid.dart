@@ -563,10 +563,13 @@ class _SunArcPainter extends CustomPainter {
     final progress = (elapsed / totalSecs).clamp(0.0, 1.0);
 
     if (progress > 0) {
+      // Lighter gold for the arc line
+      const arcColor = Color(0xFFFFD54F);
+
       final progressPaint = Paint()
-        ..color = TemporaColors.amber
+        ..color = arcColor
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.5
+        ..strokeWidth = 2.0
         ..strokeCap = StrokeCap.round;
 
       canvas.drawArc(
@@ -577,22 +580,22 @@ class _SunArcPainter extends CustomPainter {
         progressPaint,
       );
 
-      // Sun dot
+      // Sun dot — smaller and softer glow
       final angle = math.pi + math.pi * progress;
       final dx = center.dx + radius * math.cos(angle);
       final dy = center.dy + radius * math.sin(angle);
 
       canvas.drawCircle(
         Offset(dx, dy),
-        6,
-        Paint()..color = TemporaColors.amber,
+        7,
+        Paint()
+          ..color = const Color(0x334D9DE0)
+          ..style = PaintingStyle.fill,
       );
       canvas.drawCircle(
         Offset(dx, dy),
-        10,
-        Paint()
-          ..color = TemporaColors.amberGlow
-          ..style = PaintingStyle.fill,
+        5,
+        Paint()..color = arcColor,
       );
     }
 

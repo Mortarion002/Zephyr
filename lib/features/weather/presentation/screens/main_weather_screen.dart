@@ -76,7 +76,9 @@ class _WeatherBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final topPad = MediaQuery.of(context).padding.top + 56 + 8;
     final unit = ref.watch(temperatureUnitProvider);
-    final glowColor = WeatherIconMapper.glowFor(weather.conditionId);
+    final isDay = weather.observedAt.isAfter(weather.sunrise) &&
+        weather.observedAt.isBefore(weather.sunset);
+    final glowColor = WeatherIconMapper.glowFor(weather.conditionId, isDay: isDay);
 
     return WeatherBackground(
       accentColor: glowColor,

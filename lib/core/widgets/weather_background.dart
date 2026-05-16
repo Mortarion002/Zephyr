@@ -18,11 +18,10 @@ class WeatherBackground extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            accent.withAlpha(80),
+            accent.withAlpha(40),
             TemporaColors.background,
-            TemporaColors.black,
           ],
-          stops: const [0.0, 0.45, 1.0],
+          stops: const [0.0, 0.28],
         ),
       ),
       child: child,
